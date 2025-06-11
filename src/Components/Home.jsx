@@ -56,13 +56,16 @@ const Home = () => {
   return (
     <div>
 
-      <div className="image-container">
-        <img
-          src="/ratlamrelay1.svg"
-          alt="Ashara 1447H"
-          className="centered-image"
-        />
-      </div>
+      <div className="hero-background">
+  <div className="image-container">
+    <img
+      src="/ratlamrelay2.svg"
+      alt="Ashara 1447H"
+      className="centered-image"
+    />
+  </div>
+</div>
+
 
       <section className="cards-container">
   <div className="info-card">
