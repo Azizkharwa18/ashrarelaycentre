@@ -10,6 +10,7 @@ import KalimiDomeZone from './pages/KalimiDomeZone';
 import SaifeeZone from './pages/SaifeeZone';
 import BurhaniZone from './pages/BurhaniZone';
 import NajmiZone from './pages/NajmiZone';
+import TravelGuide from './pages/TravelGuide';
 /* Helo */
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/zones/saifee" element={<SaifeeZone />} />
         <Route path="/zones/burhani" element={<BurhaniZone />} />
         <Route path="/zones/najmi" element={<NajmiZone />} />
+        <Route path="/travelguide" element={<TravelGuide />} />
 
       </Routes>
     </Router>
