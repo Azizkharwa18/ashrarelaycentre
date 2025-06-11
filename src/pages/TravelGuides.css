@@ -70,7 +70,7 @@ body::before {
   justify-content: center;
   align-items: center;
   gap: 0.4rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #0a3d62;
   margin-bottom: 0.8rem;
@@ -78,20 +78,20 @@ body::before {
 }
 
 .card-header span.to-separator {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #55321e;
   font-weight: 500;
 }
 
 .card-distance {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  color: #555;
+  color: #c19d3c;
   margin-bottom: 0.5rem;
 }
 
 .card-fare {
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #55321e;
 }

@@ -6,7 +6,7 @@ import { FaChevronDown, FaChevronUp ,FaMapMarkedAlt} from 'react-icons/fa'; // f
 const faqs = [
   {
     question: "How To Reach Waaz Venue Destination?",
-    answer: "You can use Local oublic Transport or You can visit by walk if you are nearer to your alotted Venue."
+    answer: "You can use Local public Transport or You can visit by walk if you are nearer to your alotted Venue."
   },
   {
     question: "Where is the Mumineen Help Desk located?",
@@ -116,36 +116,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer-container">
-        <div className="footer-content">
-          <div className="footer-column">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="https://its52.com">ITS52</a></li>
-              <li><a href="https://asharamubaraka.net">Ashara Website</a></li>
-            </ul>
-          </div>
-
-          <div className="footer-column">
-            <h3>Contact Us</h3>
-            <p>Email: <a href="mailto:help@ashararelaycenter.website" className="email-link">help@ashararelaycenter.website</a></p>
-            <p>Phone: +91 99999 99999</p>
-            <p>Address: Burhani Guards, Ratlam, MP</p>
-          </div>
-
-          <div className="footer-column">
-            <h3>Ashara 1447H Countdown</h3>
-            <div id="countdown" className="countdown-timer">Loading...</div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Burhani Guards Ratlam. All rights reserved.</p>
-          <p>Developed & Designed By : Murtaza Dawoodji & Aziz Kharwawala </p>
-        </div>
-      </footer>
 
     </div>
   );
