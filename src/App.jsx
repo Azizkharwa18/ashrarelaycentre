@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
+import Footer from "./Components/Footer";
 import Home from './Components/Home';
 import Announcements from './pages/Announcements';
 import Zones from './pages/Zones';
@@ -30,6 +31,7 @@ function App() {
         <Route path="/travelguide" element={<TravelGuide />} />
 
       </Routes>
+      <Footer />
     </Router>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './TravelGuides.css';
-import { FaCarSide } from 'react-icons/fa';
+import { FaCarSide,FaTaxi } from 'react-icons/fa';
 
 const fares = [
   {
@@ -39,7 +39,7 @@ const TravelGuides = () => {
   return (
     <div className="travel-guides-container">
       <div className="header-section">
-        <FaCarSide className="header-icon" />
+        <FaTaxi      className="header-icon" />
         <h2>Transport Fare Guide</h2>
         <p>Approximate auto rickshaw fares and distances for major locations</p>
       </div>
