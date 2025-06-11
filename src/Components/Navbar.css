@@ -21,26 +21,15 @@
   padding-left: 1rem;
 }
 
-/* Remove pill styling completely */
-.pill-logo {
-  all: unset; /* ✅ Resets all inherited styles */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 /* Optional: keep logo images clean and responsive */
-.pill-logo1 img {
-  width: 90px;
-  height: 100px; 
-  object-fit: contain;
-}
+
 .pill-logo2 img{
   width: 80%;
   height: 80%; 
   object-fit: contain;
   margin-right: 0 ;
-margin-top: 8px;}
+margin-top: 5px;}
 
 /* Standardize logo sizes */
 
