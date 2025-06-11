@@ -63,20 +63,45 @@ body::before {
   font-weight: 700;
 }
 
-.image-container {
+.hero-background {
+  width: 100%;
+  height: 400px; /* Adjust as needed */
+  background-image: url('/masjidbg.jpg'); /* ✅ Make sure this path is correct */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -130px; /* ✅ Anchors top, so it crops bottom */
   position: relative;
-  z-index: 2;
-  text-align: center;
-  padding-top: 2rem; /* ✅ shifts image down internally without pushing whole section */
-  margin-bottom: 1rem;
+  margin-top: 80px; /* ✅ Pushes it below the navbar (adjust if your navbar is taller) */
+  z-index: 1;
 }
 
+.hero-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.47); /* Optional overlay tint */
+  z-index: 2;
+}
+
+.image-container {
+  text-align: center;
+  margin-top: -77px; /* If you want it to slightly overlap */
+  position: relative;
+  z-index: 3;
+}
 
 .centered-image {
   max-width: 700px;
   width: 100%;
   height: auto;
+  z-index: 3;
+  position: relative;
+  margin-top: 30px;
 }
+
 
 
 /* Right Urdu Section */

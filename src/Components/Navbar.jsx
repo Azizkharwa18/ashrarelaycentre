@@ -9,6 +9,7 @@ import {
   FaBars,
   FaTimes,
   FaCarSide ,
+  FaTaxi
 } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -48,7 +49,7 @@ const Navbar = () => {
             <FaInfoCircle /> General Guidelines
           </NavLink>
           <NavLink to="/travelguide" className="menu-item" onClick={() => setMenuOpen(false)}>
-            <FaCarSide/> Transport Guidelines
+            <FaTaxi/> Transport Guidelines
           </NavLink>
         </div>
       </nav>
