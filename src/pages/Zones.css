@@ -1,0 +1,112 @@
+/* Fixed low-opacity background image using body::before */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/jameafront.svg'); /* Replace with your actual image path */
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: top center;
+  opacity: 0.2; /* Control how faint the background appears */
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+/* Container styles */
+
+.zones-container {
+  padding: 40px 20px;
+/*   background-color: #f9fafb; */
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  /* opacity: 80%; */
+  z-index: 1;
+}
+
+/* Title */
+.zones-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 30px;
+}
+
+/* Grid layout */
+.zones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card */
+.zone-card {
+  background-color: white; /* ✅ SOLID */
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zone-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #f1c40f;
+}
+
+/* Header */
+.zone-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.zone-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.zone-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Body */
+.zone-location {
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.zone-capacity {
+  color: #111827;
+  font-weight: 500;
+}
+
+/* Footer */
+.zone-footer {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.zone-link {
+  font-size: 18px;
+  color: goldenrod;
+  cursor: pointer;
+}
+.map-container {
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
