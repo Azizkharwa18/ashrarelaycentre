@@ -1,17 +1,19 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 import { FaBullhorn } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp ,FaMapMarkedAlt} from 'react-icons/fa'; // for FAQ toggles
+
 const faqs = [
   {
-    question: "How can I update my Arrival Scanning if I am unable to do so at the airport?",
-    answer: "You can update your Arrival Scanning at the Mumineen Help Desk located at the venue. Please bring your ITS card and travel documents."
+    question: "How To Reach Waaz Venue Destination?",
+    answer: "You can use Local oublic Transport or You can visit by walk if you are nearer to your alotted Venue."
   },
   {
     question: "Where is the Mumineen Help Desk located?",
     answer: "The Mumineen Help Desk is located near the main entrance of the Ratlam Relay Centre."
   },
   {
-    question: "Can I use international credit/debit cards in Sri Lanka?",
+    question: "Can I use international credit/debit cards in Ratlam?",
     answer: "Yes, most international credit/debit cards are accepted at major hotels and stores. However, it is advisable to carry some local currency for small purchases."
   },
   {
@@ -20,130 +22,133 @@ const faqs = [
   }
 ];
 
-
 const Home = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
   useEffect(() => {
-  const targetDate = new Date("2025-06-27T00:00:00"); // 🔁 Update with real Ashara start date
+    const targetDate = new Date("2025-06-27T00:00:00");
+    const updateCountdown = () => {
+      const now = new Date();
+      const diff = targetDate - now;
 
-  const updateCountdown = () => {
-    const now = new Date();
-    const diff = targetDate - now;
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "Ashara has begun!";
+        return;
+      }
 
-    if (diff <= 0) {
-      document.getElementById("countdown").textContent = "Ashara has begun!";
-      return;
-    }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").textContent =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
 
-    document.getElementById("countdown").textContent =
-      `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
-
-  const interval = setInterval(updateCountdown, 1000);
-  return () => clearInterval(interval);
-}, []);
 
   return (
     <div>
 
-    <div className="image-container">
+      <div className="image-container">
         <img
-          src="/ahlan.png" // 🔄 Replace with your actual image name & path
+          src="/ratlamrelay1.svg"
           alt="Ashara 1447H"
           className="centered-image"
         />
       </div>
 
+      <section className="cards-container">
+  <div className="info-card">
+    <div className="card-header">
+      <FaBullhorn className="card-icon" />
+      <h3>Important Announcements</h3>
+    </div>
+    <p>Stay updated with the latest guidance and notices for Ashara Mubaraka 1447H.</p>
+    <a href="/announcements" className="card-button">View Announcements</a>
+  </div>
+
+  <div className="info-card">
+    <div className="card-header">
+      <FaMapMarkedAlt className="card-icon" />
+      <h3>Waaz Relay Centres</h3>
+    </div>
+    <p>Find your allocated relay zone and center for Waaz Talaqqi.</p>
+    <a href="/zones" className="card-button">View Relay Zones</a>
+  </div>
+</section>
+
+
+      {/* 🔻 FAQ Section Here */}
       <section className="announcement-container">
-        {/* Flex container with two columns */}
-        <div className="announcement-section">
-          {/* English Message (Left Column) */}
+        <div className="announcement-section faq-section">
           <div className="left-announcement">
             <div className="announcement-header">
               <FaBullhorn />
-              <span>Announcement </span>
+              <span>Frequently Asked Questions</span>
             </div>
-            <p>
-              Mumineen must make travel arrangements only after receiving Raza for <strong>Ashara Mubaraka 1447H</strong> at <span className="highlight">Ratlam Relay Centre</span>.
-            </p>
-          </div>
-          {/* Urdu Message (Right Column) */}
-          {/* <div className="right-announcement">
-            <div className="announcement-header">
-              <FaBullhorn />
-              <span>اعلان</span>
-            </div>
-            <p>
-              سگلا مہمانوں سی التماس چھے کہ رتلام <br />
-              ریلیے سینٹر واسطے رضا فضل قائی اہنا <br />
-              بعد ے سفر کرواں نی تیاری کرے۔
-            </p>
-          </div> */}
-        </div>
-      </section>
-      <section className="announcement-container">
-        {/* Flex container with two columns */}
-        <div className="announcement-section">
-          {/* English Message (Left Column) */}
-          <div className="left-announcement">
-            <div className="announcement-header">
-              <FaBullhorn />
-              <span> </span>
-            </div>
-            <p>
-             
 
-            </p>
+            {faqs.map((faq, index) => (
+              <div
+                className={`faq-item ${openIndex === index ? 'open' : ''}`}
+                key={index}
+              >
+                <div
+                  className="faq-question"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <span>{faq.question}</span>
+                  {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+                </div>
+                {openIndex === index && (
+                  <div className="faq-answer">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
-{/* Footer Section */}
-<footer className="footer-container">
-  <div className="footer-content">
-    {/* Quick Links */}
-    <div className="footer-column">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="https://its52.com">ITS52</a></li>
-        <li><a href="https://asharamubaraka.net">Ashara Website</a></li>
-        {/* <li><a href="#calendar">Hijri Calendar</a></li> */}
-      </ul>
-    </div>
 
-    {/* Contact Info */}
-    <div className="footer-column">
-  <h3>Contact Us</h3>
-  <p>
-    Email: <a href="mailto:help@ashararelaycenter.website" className="email-link">help@ashararelaycenter.website</a>
-  </p>
-  <p>Phone: +91 99999 99999</p>
-  <p>Address: Burhani Guards, Ratlam, MP</p>
-</div>
+      {/* Footer */}
+      <footer className="footer-container">
+        <div className="footer-content">
+          <div className="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="https://its52.com">ITS52</a></li>
+              <li><a href="https://asharamubaraka.net">Ashara Website</a></li>
+            </ul>
+          </div>
 
+          <div className="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:help@ashararelaycenter.website" className="email-link">help@ashararelaycenter.website</a></p>
+            <p>Phone: +91 99999 99999</p>
+            <p>Address: Burhani Guards, Ratlam, MP</p>
+          </div>
 
-    {/* Countdown */}
-    <div className="footer-column">
-      <h3>Ashara 1447H Countdown</h3>
-      <div id="countdown" className="countdown-timer">Loading...</div>
-    </div>
-  </div>
-  <div className="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} Burhani Guards Ratlam. All rights reserved.</p>
-    <p>Developed & Designed By : Murtaza Dawoodji & Aziz Kharwawala </p>
-  </div>
-</footer>
-
+          <div className="footer-column">
+            <h3>Ashara 1447H Countdown</h3>
+            <div id="countdown" className="countdown-timer">Loading...</div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Burhani Guards Ratlam. All rights reserved.</p>
+          <p>Developed & Designed By : Murtaza Dawoodji & Aziz Kharwawala </p>
+        </div>
+      </footer>
 
     </div>
   );
 };
-
-
-
 
 export default Home;
